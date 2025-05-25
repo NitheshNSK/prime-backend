@@ -17,7 +17,7 @@ app.use(
       "http://127.0.0.1:5501",
       "http://localhost:3001",
       "https://prime-landing-page-two.vercel.app",
-      "https://prime-admin-cyan.vercel.app/",
+      "https://prime-admin-cyan.vercel.app",
     ],
     credentials: true, // If using cookies or auth headers
   })
