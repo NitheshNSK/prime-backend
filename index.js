@@ -18,6 +18,8 @@ app.use(
       "http://localhost:3001",
       "https://prime-landing-page-chi.vercel.app",
       "https://prime-admin-lovat.vercel.app",
+      "https://demo.app.primemarblenyc.com",
+      "https://demo.primemarblenyc.com",
     ],
     credentials: true, // If using cookies or auth headers
   })
