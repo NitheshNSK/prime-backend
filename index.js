@@ -35,11 +35,12 @@ const authRoutes = require("./routes/authRoutes");
 const marbleRoutes = require("./routes/marbleRoutes");
 const completedProjectRoutes = require("./routes/completedProjectRoutes");
 const kitchenProjectRoutes = require("./routes/kitchenProjectRoutes");
+const categoriesRoutes = require("./routes/categoriesRoutes");
 app.use("/api/projects", completedProjectRoutes);
 app.use("/api/admin", authRoutes);
 app.use("/api/marbles", marbleRoutes);
 app.use("/api/kitchen-projects", kitchenProjectRoutes);
-
+app.use("/api/categories", categoriesRoutes);
 // Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
