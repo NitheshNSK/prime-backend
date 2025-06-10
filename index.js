@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require("path");
-
+const r2 = require("./r2"); // your R2/S3 client
 dotenv.config();
 const app = express();
 
@@ -41,6 +41,23 @@ app.use("/api/admin", authRoutes);
 app.use("/api/marbles", marbleRoutes);
 app.use("/api/kitchen-projects", kitchenProjectRoutes);
 app.use("/api/categories", categoriesRoutes);
+app.get("/api/:fileName", async (req, res) => {
+  const fileName = req.params.fileName;
+
+  const command = new GetObjectCommand({
+    Bucket: "uploads",
+    Key: fileName,
+  });
+
+  try {
+    const result = await r2.send(command);
+    res.setHeader("Content-Type", result.ContentType || "image/jpeg");
+    result.Body.pipe(res);
+  } catch (err) {
+    console.error("View error:", err);
+    res.status(404).send("Image not found");
+  }
+});
 // Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
