@@ -12,7 +12,7 @@ const {
 } = require("../controllers/marbleController");
 
 // Public API
-router.get("/user", getAllMarblesPublic);
+router.get("/user", getAllMarblesAdmin);
 
 // Admin APIs
 router.get("/admin", auth, getAllMarblesAdmin);
